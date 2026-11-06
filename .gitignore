@@ -9,3 +9,5 @@
 !assets/**
 !.github/
 !.github/**
+!README.en.md
+!CHANGELOG.en.md

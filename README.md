@@ -1,4 +1,5 @@
 <p align="center"><img src="assets/cover.png" alt="TeleVip Native — Windows 原生客户端" width="100%"></p>
+<p align="center"><b>简体中文</b> · <a href="README.en.md">English</a></p>
 <h1 align="center">TeleVip Native</h1>
 <p align="center">面向 Telegram Desktop 的 Windows 原生增强控制台</p>
 <p align="center"><img src="assets/badges.png" alt="Windows x64 · C++ 原生界面 · 闭源二进制发布" width="680"></p>

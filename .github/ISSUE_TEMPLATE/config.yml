@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: TG 发布频道与免费卡密入口
+  - name: TG 频道 / Release channel
     url: https://t.me/MapAdkillerr
-    about: 订阅通知并按频道公告进入签到机器人。
+    about: 发布通知与社区支持 / Release news and community support.
+  - name: 免费卡密机器人 / Free-key bot
+    url: https://t.me/TeleVip_ldxm666_bot
+    about: 订阅频道后私聊签到 / Subscribe to the channel, then check in privately.

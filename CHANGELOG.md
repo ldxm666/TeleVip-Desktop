@@ -1,5 +1,7 @@
 # 更新记录
 
+**简体中文** · [English](CHANGELOG.en.md)
+
 ## v2026.11.07-beta.1
 
 - 初始闭源公开测试发行，提供 Windows x64 客户端。
