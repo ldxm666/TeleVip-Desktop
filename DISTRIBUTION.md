@@ -6,7 +6,7 @@
 
 第三方组件及相应衍生部分仍适用各自原有许可证，本说明不限制其许可证已经授予的权利。WhiteSur 的 MIT 声明见 THIRD_PARTY_NOTICES.txt。
 
-公开测试版按现状提供，功能与兼容性请以版本说明及界面提示为准。
+正式发行版按现状提供，功能与兼容性请以版本说明及界面提示为准。
 
 ---
 
@@ -18,4 +18,4 @@ Making the repository public, providing downloads or issuing free license keys d
 
 Third-party components and their applicable derivative portions retain their original licenses. These terms do not restrict rights already granted under those licenses. WhiteSur's MIT notice is included in THIRD_PARTY_NOTICES.txt.
 
-The public beta is provided as is. Refer to release notes and in-app labels for functionality and compatibility.
+The stable release is provided as is. Refer to release notes and in-app labels for functionality and compatibility.

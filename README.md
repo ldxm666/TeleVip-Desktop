@@ -3,13 +3,13 @@
 <h1 align="center">TeleVip Native</h1>
 <p align="center">面向 Telegram Desktop 的 Windows 原生增强控制台</p>
 <p align="center"><img src="assets/badges.png" alt="Windows x64 · C++ 原生界面 · 闭源二进制发布" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07-beta.1"><b>下载公开测试版</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>下载正式版</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
 
 ---
 
 TeleVip Native 将功能控制、授权验证与常用工具整合在一个原生桌面界面中。界面参考 WhiteSur 的视觉语言，提供深浅主题、中英双语，以及统一的页面与交互过渡。
 
-> **这是闭源发布仓库。** 这里只分发使用说明、界面截图与客户端安装包；不公开自有客户端源码、Hook 实现或服务端。当前版本为公开测试版，目标 Telegram 的适配能力以版本说明与界面提示为准。
+> **这是闭源发布仓库。** 这里只分发使用说明、界面截图与客户端安装包；不公开自有客户端源码、Hook 实现或服务端。当前版本为正式发行版，目标 Telegram 的适配能力以版本说明与界面提示为准。
 
 ## 免费卡密
 

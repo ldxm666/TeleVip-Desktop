@@ -2,6 +2,12 @@
 
 [简体中文](CHANGELOG.md) · **English**
 
+## v2026.11.07 · Stable
+
+- Published as a stable release and marked as the latest GitHub version.
+- Updated Chinese and English download links, distribution terms and bundled instructions.
+- Uses the verified client binary; no feature changes or expanded compatibility claims in this release.
+
 ## v2026.11.07-beta.1
 
 - Initial closed-source public beta for Windows x64.

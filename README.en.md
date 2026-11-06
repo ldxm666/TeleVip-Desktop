@@ -3,13 +3,13 @@
 <h1 align="center">TeleVip Native</h1>
 <p align="center">A native Windows control panel for Telegram Desktop enhancements</p>
 <p align="center"><img src="assets/badges-en.png" alt="Windows x64 · Native C++ UI · Closed-source releases" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07-beta.1"><b>Download the public beta</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>Download the stable release</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
 
 ---
 
 TeleVip Native brings feature controls, online licensing and common tools into one native desktop interface. Its visual language is inspired by WhiteSur, with light and dark themes, English and Simplified Chinese, and consistent transitions throughout the app.
 
-> **This is a closed-source distribution repository.** It contains user documentation, screenshots and client downloads. Proprietary client source, Hook implementations and server code are not published here. This is a public beta; Telegram version compatibility follows the release notes and in-app status labels.
+> **This is a closed-source distribution repository.** It contains user documentation, screenshots and client downloads. Proprietary client source, Hook implementations and server code are not published here. This is a stable release; Telegram version compatibility follows the release notes and in-app status labels.
 
 ## Free license keys
 
