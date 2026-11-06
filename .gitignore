@@ -1,0 +1,11 @@
+# Only reviewed release documentation and artwork belong in this repository.
+*
+!.gitignore
+!README.md
+!CHANGELOG.md
+!DISTRIBUTION.md
+!THIRD_PARTY_NOTICES.txt
+!assets/
+!assets/**
+!.github/
+!.github/**

@@ -1,0 +1,22 @@
+name: 问题反馈
+description: 提交可复现的问题，请勿填写任何卡密或凭据。
+title: "[问题] "
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: 系统与版本
+      description: Windows / TeleVip Native / Telegram Desktop 的版本。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤与实际结果
+      description: 请先移除卡密、令牌、账户信息和个人会话资料。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果与补充截图
