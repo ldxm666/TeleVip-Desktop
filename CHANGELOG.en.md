@@ -2,6 +2,14 @@
 
 [简体中文](CHANGELOG.md) · **English**
 
+## v2026.11.07.1 · Stable
+
+- Publish the desktop UI, motion, translation tools, licensing client and tests under MIT; retain the core Hook privately.
+- Add a buildable UI preview, bilingual build guide and explicit source boundary.
+- Fix valid long-duration cards being treated as invalid after short-session or network failures.
+- Retry session renewal, reauthenticate expired short tokens and restore preserved feature switches after recovery.
+- Preserve same-device concurrent sessions, device binding and the original card expiry; keep server resource limits unchanged.
+
 ## v2026.11.07 · Stable
 
 - Published as a stable release and marked as the latest GitHub version.

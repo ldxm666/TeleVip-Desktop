@@ -2,14 +2,22 @@
 <p align="center"><a href="README.md">简体中文</a> · <b>English</b></p>
 <h1 align="center">TeleVip Native</h1>
 <p align="center">A native Windows control panel for Telegram Desktop enhancements</p>
-<p align="center"><img src="assets/badges-en.png" alt="Windows x64 · Native C++ UI · Closed-source releases" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>Download the stable release</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 free trial keys</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
+<p align="center"><img src="assets/badges-en.png" alt="Windows x64 · MIT desktop source · Private Hook core" width="680"></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVip-Desktop/releases/tag/v2026.11.07.1"><b>Download the stable release</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 free trial keys</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
 
 ---
 
 TeleVip Native brings feature controls, online licensing and common tools into one native desktop interface. Its visual language is inspired by WhiteSur, with light and dark themes, English and Simplified Chinese, and consistent transitions throughout the app.
 
-> **This is a closed-source distribution repository.** It contains user documentation, screenshots and client downloads. Proprietary client source, Hook implementations and server code are not published here. This is a stable release; Telegram version compatibility follows the release notes and in-app status labels.
+> **Desktop source is now public under MIT; the core Hook remains private.** This repository includes the native interface, motion, themes, translation tools, licensing client and tests. The official Windows client remains available as a stable release. See [source scope](SOURCE_SCOPE.md) and [build instructions](BUILDING.md).
+
+## Explore the source
+
+| Read | Build | Use |
+| --- | --- | --- |
+| [Native desktop source](src) · [MIT license](LICENSE) | [Build the UI preview](BUILDING.md) · `build.cmd` · `test.cmd` | [Official stable client](https://github.com/ldxm666/TeleVip-Desktop/releases/latest) |
+
+Hook / detour implementations, injection, target memory patches and production IPC stay private. Public builds run an independent UI preview; they cannot rebuild the complete official executable. The [scope document](SOURCE_SCOPE.md) explains the boundary.
 
 ## Free license keys
 
@@ -56,7 +64,7 @@ The screenshots show Simplified Chinese; the app also supports English.
 
 **Requirements: Windows 10 / 11 x64 and an internet connection.**
 
-1. Visit [GitHub Releases](https://github.com/ldxm666/TeleVipNative/releases) and download the Windows x64 ZIP for the intended version.
+1. Visit [GitHub Releases](https://github.com/ldxm666/TeleVip-Desktop/releases) and download the Windows x64 ZIP for the intended version.
 2. Extract the entire ZIP to a writable folder; do not run the app directly inside the archive.
 3. Run `TeleVipNative.exe` and activate it with a valid key.
 4. Select the target Telegram Desktop process in the app, then enable compatible features as needed.
@@ -83,7 +91,7 @@ The current verification covers activation, themes, keyboard navigation, QR expo
 <details>
 <summary><b>Why does the app need an internet connection?</b></summary>
 
-The client verifies the key at startup and renews its session while running. If a key is disabled, expires or cannot renew, the client stops new operations and clears shared feature switches. Already injected modules or memory modifications may remain until the affected process is closed and restarted.
+The card validity period and the short signed session are separate. Temporary network failures retry with bounded backoff and do not immediately revoke a valid session. After the signed lease expires, features pause while the original switch settings are kept; a successful reconnection restores them automatically. A genuinely expired, disabled or mismatched card is still rejected. Existing injected modules or static memory changes may remain until the target process restarts.
 </details>
 
 <details>
@@ -104,7 +112,7 @@ Keys bind to the current Windows device. Contact the maintainer through the rele
 No. Low-level features depend on target-version compatibility. Some items remain experimental; follow the app's labels and the relevant release notes.
 </details>
 
-Report reproducible issues through [Issues](https://github.com/ldxm666/TeleVipNative/issues) or the [release channel](https://t.me/MapAdkillerr). Include the Windows, TeleVip Native and Telegram Desktop versions, steps to reproduce and redacted screenshots. Do not upload keys, tokens, session files or private conversations.
+Report reproducible issues through [Issues](https://github.com/ldxm666/TeleVip-Desktop/issues) or the [release channel](https://t.me/MapAdkillerr). Include the Windows, TeleVip Native and Telegram Desktop versions, steps to reproduce and redacted screenshots. Do not upload keys, tokens, session files or private conversations.
 
 ## Support development
 
@@ -116,10 +124,10 @@ Donations are voluntary and **do not automatically grant a license key**.
 
 ## Releases and licensing
 
-- See the [English changelog](CHANGELOG.en.md) and [client releases](https://github.com/ldxm666/TeleVipNative/releases).
-- Proprietary code is distributed in closed-source form. See [distribution terms](DISTRIBUTION.md#distribution-scope-english). Third-party components retain their original license rights.
+- See the [English changelog](CHANGELOG.en.md) and [client releases](https://github.com/ldxm666/TeleVip-Desktop/releases).
+- Source included in this repository is MIT-licensed; the private Hook and official proprietary components are not covered by that grant. See [LICENSE](LICENSE), [source scope](SOURCE_SCOPE.md) and [distribution terms](DISTRIBUTION.md). Third-party rights are retained.
 - The visual design references [WhiteSur GTK Theme](https://github.com/vinceliuice/WhiteSur-gtk-theme). Its MIT notice is retained in [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.txt).
 - Cloud licensing is adapted from [luckinhappykami](https://github.com/gaofee/luckinhappykami). The server is not distributed in this repository.
-- This is an independent project with no official affiliation with Telegram. Closed-source distribution and online module delivery do not guarantee protection against reverse engineering.
+- This is an independent project with no official affiliation with Telegram. Keeping the core private and delivering modules online cannot guarantee protection against reverse engineering.
 
 <p align="center">TeleVip Native · A native interface, clear controls, steady improvements.</p>

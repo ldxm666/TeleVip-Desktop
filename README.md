@@ -2,14 +2,22 @@
 <p align="center"><b>简体中文</b> · <a href="README.en.md">English</a></p>
 <h1 align="center">TeleVip Native</h1>
 <p align="center">面向 Telegram Desktop 的 Windows 原生增强控制台</p>
-<p align="center"><img src="assets/badges.png" alt="Windows x64 · C++ 原生界面 · 闭源二进制发布" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>下载正式版</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 张免费体验卡</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
+<p align="center"><img src="assets/badges.png" alt="Windows x64 · MIT 桌面源码 · 核心 Hook 私有" width="680"></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVip-Desktop/releases/tag/v2026.11.07.1"><b>下载正式版</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 张免费体验卡</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
 
 ---
 
 TeleVip Native 将功能控制、授权验证与常用工具整合在一个原生桌面界面中。界面参考 WhiteSur 的视觉语言，提供深浅主题、中英双语，以及统一的页面与交互过渡。
 
-> **这是闭源发布仓库。** 这里只分发使用说明、界面截图与客户端安装包；不公开自有客户端源码、Hook 实现或服务端。当前版本为正式发行版，目标 Telegram 的适配能力以版本说明与界面提示为准。
+> **桌面层现已采用 MIT 开源，核心 Hook 继续私有。** 本仓库公开原生界面、动效、主题、翻译工具、授权客户端与测试，并提供官方 Windows 正式版。请查看 [源码范围](SOURCE_SCOPE.md) 与 [构建说明](BUILDING.md)。
+
+## 从源码开始
+
+| 阅读 | 构建 | 使用 |
+| --- | --- | --- |
+| [原生桌面源码](src) · [MIT 许可证](LICENSE) | [编译界面预览版](BUILDING.md) · `build.cmd` · `test.cmd` | [下载官方正式版](https://github.com/ldxm666/TeleVip-Desktop/releases/latest) |
+
+Hook / detour 实现、DLL 注入、目标内存补丁及生产 IPC 保持私有。公开源码可独立编译 UI 预览版；完整官方二进制仍依赖私有核心。边界详见 [源码开放范围](SOURCE_SCOPE.md)。
 
 ## 免费卡密
 
@@ -54,7 +62,7 @@ TeleVip Native 将功能控制、授权验证与常用工具整合在一个原�
 
 **环境：Windows 10 / 11 x64，联网使用。**
 
-1. 打开 [GitHub Releases](https://github.com/ldxm666/TeleVipNative/releases)，下载当前版本的 Windows x64 ZIP。
+1. 打开 [GitHub Releases](https://github.com/ldxm666/TeleVip-Desktop/releases)，下载当前版本的 Windows x64 ZIP。
 2. 完整解压到可写目录，不要直接在压缩包内运行。
 3. 运行 `TeleVipNative.exe`，输入有效卡密完成授权。
 4. 按界面选择 Telegram Desktop 目标进程，再按需启用功能。
@@ -81,7 +89,7 @@ Get-FileHash .\TeleVipNative.exe -Algorithm SHA256
 <details>
 <summary><b>为什么需要联网？</b></summary>
 
-启动时需要在线验证，运行期间会续约。卡密停用、到期或续约失败时，客户端会停止新操作并清空共享功能开关；已经注入的模块或内存修改不保证立即撤销，需要退出相关进程后重新启动。
+卡密有效期与短期签名会话分开计算。临时网络故障会按退避策略重试，不会立即清除仍有效的租期；签名租期确实耗尽时暂停功能，但保留原开关，连接恢复并验证成功后自动还原。真正到期、停用或设备不匹配仍会拒绝授权。已注入模块或静态内存修改可能需要重启目标进程才能撤销。
 </details>
 
 <details>
@@ -102,7 +110,7 @@ Get-FileHash .\TeleVipNative.exe -Algorithm SHA256
 不是。底层功能依赖目标版本适配，部分项目仍处于实验阶段，以客户端标识与 Release 说明为准。
 </details>
 
-反馈可使用 [Issues](https://github.com/ldxm666/TeleVipNative/issues) 或 [TG 发布频道](https://t.me/MapAdkillerr)。请附 Windows 版本、客户端版本、Telegram 版本、复现步骤与脱敏截图，不要上传卡密、令牌或个人会话资料。
+反馈可使用 [Issues](https://github.com/ldxm666/TeleVip-Desktop/issues) 或 [TG 发布频道](https://t.me/MapAdkillerr)。请附 Windows 版本、客户端版本、Telegram 版本、复现步骤与脱敏截图，不要上传卡密、令牌或个人会话资料。
 
 ## 支持持续维护
 
@@ -114,10 +122,10 @@ Get-FileHash .\TeleVipNative.exe -Algorithm SHA256
 
 ## 发布与许可
 
-- 最新变更见 [CHANGELOG](CHANGELOG.md)，二进制见 [Releases](https://github.com/ldxm666/TeleVipNative/releases)。
-- 自有代码采用闭源分发方式，范围说明见 [DISTRIBUTION](DISTRIBUTION.md)。第三方组件保留各自的许可权利。
+- 最新变更见 [CHANGELOG](CHANGELOG.md)，二进制见 [Releases](https://github.com/ldxm666/TeleVip-Desktop/releases)。
+- 仓库内公开源码采用 [MIT 许可证](LICENSE)；私有 Hook 与官方专有组件不包含在该授权中。范围见 [SOURCE_SCOPE](SOURCE_SCOPE.md) 与 [DISTRIBUTION](DISTRIBUTION.md)，第三方许可保持不变。
 - 界面视觉参考 [WhiteSur GTK Theme](https://github.com/vinceliuice/WhiteSur-gtk-theme)，MIT 声明随发布包保留，见 [第三方许可](THIRD_PARTY_NOTICES.txt)。
 - 云端授权基于 [luckinhappykami](https://github.com/gaofee/luckinhappykami) 进行适配，服务端不在本仓库分发。
-- 本项目为独立项目，与 Telegram 官方没有隶属关系。闭源和在线下发不构成“绝对防逆向”的保证。
+- 本项目为独立项目，与 Telegram 官方没有隶属关系。核心私有与在线下发不构成“绝对防逆向”的保证。
 
 <p align="center">TeleVip Native · 简洁的界面，明确的边界，持续的改进。</p>

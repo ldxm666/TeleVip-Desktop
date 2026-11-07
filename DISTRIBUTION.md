@@ -1,21 +1,15 @@
-# 分发范围
+# 开源与分发范围 / Source and distribution scope
 
-本仓库用于 TeleVip Native 的闭源二进制分发与用户文档。
+本仓库实际公开的自有源码与相应文档采用 [MIT](LICENSE)；可依许可证学习、修改和再分发，保留版权与许可声明。用户提供的赞赏二维码仅用于向对应收款人赞赏，不表示可冒用其身份。
 
-公开本仓库、提供下载或提供免费卡密，不表示公开或授予自有源码的许可。除另有书面授权外，不额外授予对自有部分的修改、再许可或再分发权利。
+核心 Hook / detour、DLL 注入、目标内存补丁与生产 IPC 实现没有在此公开，不受本仓库 MIT 源码授权覆盖。官方客户端依赖这些专有组件；公开构建是界面预览版，不能独立重建完整官方客户端。第三方组件仍按各自许可证授权，见 [第三方声明](THIRD_PARTY_NOTICES.txt)。
 
-第三方组件及相应衍生部分仍适用各自原有许可证，本说明不限制其许可证已经授予的权利。WhiteSur 的 MIT 声明见 THIRD_PARTY_NOTICES.txt。
+官方 Release 可下载并按说明使用；未另行授予私有核心的源码许可。正式版按现状提供，功能、目标版本与限制以 Release 说明及界面标识为准。公开源码的完整边界见 [SOURCE_SCOPE](SOURCE_SCOPE.md)。
 
-正式发行版按现状提供，功能与兼容性请以版本说明及界面提示为准。
+## English
 
----
+Original source and documentation actually included in this repository are available under [MIT](LICENSE). Preserve the copyright and license notices. User-supplied donation images identify the intended recipients and do not authorize impersonation.
 
-## Distribution scope (English)
+The unpublished Hook / detour, DLL injection, target memory patches and production IPC implementation are outside this source license. The official client depends on these proprietary components; the public build is a UI preview and cannot independently reproduce the complete official executable. Third-party components retain their own licenses.
 
-This repository distributes TeleVip Native client binaries and user documentation in closed-source form.
-
-Making the repository public, providing downloads or issuing free license keys does not publish or license the proprietary source code. Unless separately authorized in writing, no additional rights to modify, sublicense or redistribute proprietary components are granted.
-
-Third-party components and their applicable derivative portions retain their original licenses. These terms do not restrict rights already granted under those licenses. WhiteSur's MIT notice is included in THIRD_PARTY_NOTICES.txt.
-
-The stable release is provided as is. Refer to release notes and in-app labels for functionality and compatibility.
+Official Release downloads may be used as documented. No source license to the private core is granted. Releases are provided as is; consult the release notes and in-app labels for compatibility. See [SOURCE_SCOPE](SOURCE_SCOPE.md) for the precise public/private boundary.

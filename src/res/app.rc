@@ -1,0 +1,17 @@
+#include <windows.h>
+
+#define IDI_APP_ICON 1
+#define IDR_HOOK_DLL 101
+#define IDR_LOGO_PNG 102
+#define IDR_WECHAT_QR 103
+#define IDR_ALIPAY_QR 104
+#define IDR_WECHAT_ORIGINAL 105
+#define IDR_ALIPAY_ORIGINAL 106
+
+IDI_APP_ICON ICON "res\\app.ico"
+IDR_LOGO_PNG RCDATA "res\\logo.png"
+IDR_WECHAT_QR RCDATA "res\\donation_wechat.png"
+IDR_ALIPAY_QR RCDATA "res\\donation_alipay.png"
+IDR_WECHAT_ORIGINAL RCDATA "res\\donation_wechat_original.jpg"
+IDR_ALIPAY_ORIGINAL RCDATA "res\\donation_alipay_original.jpg"
+1 RT_MANIFEST "res\\app.manifest"

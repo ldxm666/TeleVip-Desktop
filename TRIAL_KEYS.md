@@ -6,7 +6,7 @@
 
 ## 领取与使用
 
-1. [下载 Windows x64 正式版](https://github.com/ldxm666/TeleVipNative/releases/latest)，完整解压。
+1. [下载 Windows x64 正式版](https://github.com/ldxm666/TeleVip-Desktop/releases/latest)，完整解压。
 2. 从下表任选一张卡密，复制到客户端“云端授权”页面。
 3. 首次成功激活起 **24 小时**有效，绑定首次激活的 Windows 设备；有效期内同一设备可以重复验证。
 
@@ -16,7 +16,7 @@
 
 ## Claim and use
 
-1. [Download the stable Windows x64 release](https://github.com/ldxm666/TeleVipNative/releases/latest) and extract the ZIP completely.
+1. [Download the stable Windows x64 release](https://github.com/ldxm666/TeleVip-Desktop/releases/latest) and extract the ZIP completely.
 2. Copy one key from the table into the app's cloud activation screen.
 3. Each key lasts **24 hours from its first successful activation** and binds to that Windows device. The same device may reverify while the key is valid.
 
