@@ -3,7 +3,7 @@
 <h1 align="center">TeleVip Native</h1>
 <p align="center">面向 Telegram Desktop 的 Windows 原生增强控制台</p>
 <p align="center"><img src="assets/badges.png" alt="Windows x64 · C++ 原生界面 · 闭源二进制发布" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>下载正式版</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>下载正式版</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 张免费体验卡</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
 
 ---
 
@@ -12,6 +12,14 @@ TeleVip Native 将功能控制、授权验证与常用工具整合在一个原�
 > **这是闭源发布仓库。** 这里只分发使用说明、界面截图与客户端安装包；不公开自有客户端源码、Hook 实现或服务端。当前版本为正式发行版，目标 Telegram 的适配能力以版本说明与界面提示为准。
 
 ## 免费卡密
+
+### 方式一：GitHub 直接领取（首批 100 张）
+
+🎁 **[打开免费体验卡密列表 →](TRIAL_KEYS.md)**
+
+无需先加入群组，选一张卡密即可体验。每张卡首次激活起 **24 小时**有效，绑定一台 Windows 设备，先到先得；列表不实时更新使用状态。
+
+### 方式二：机器人每日签到
 
 **进群 / 订阅发布频道，通过签到机器人获取免费卡密。**
 

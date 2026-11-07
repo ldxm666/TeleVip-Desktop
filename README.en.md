@@ -3,7 +3,7 @@
 <h1 align="center">TeleVip Native</h1>
 <p align="center">A native Windows control panel for Telegram Desktop enhancements</p>
 <p align="center"><img src="assets/badges-en.png" alt="Windows x64 · Native C++ UI · Closed-source releases" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>Download the stable release</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVipNative/releases/tag/v2026.11.07"><b>Download the stable release</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 free trial keys</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
 
 ---
 
@@ -12,6 +12,14 @@ TeleVip Native brings feature controls, online licensing and common tools into o
 > **This is a closed-source distribution repository.** It contains user documentation, screenshots and client downloads. Proprietary client source, Hook implementations and server code are not published here. This is a stable release; Telegram version compatibility follows the release notes and in-app status labels.
 
 ## Free license keys
+
+### Option 1: Claim directly on GitHub — first 100 keys
+
+🎁 **[Open the free trial key list →](TRIAL_KEYS.md#claim-and-use)**
+
+No group membership is required for this public batch. Each key lasts **24 hours from first activation**, binds to one Windows device and is available first come, first served. Claim status is not updated live.
+
+### Option 2: Daily bot check-in
 
 **Join the community release channel, then check in with the bot to receive a free license key.**
 
