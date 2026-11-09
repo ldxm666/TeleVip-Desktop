@@ -11,6 +11,7 @@
 #include "support.h"
 #include "theme.h"
 #include "tools.h"
+#include "archive_loader.h"
 
 namespace tv {
 
@@ -236,6 +237,7 @@ private:
     TranslationServer translate_server_;
     NativeTranslateAgent native_agent_;
     Settings settings_;
+    ArchiveLoader archive_loader_{[](size_t offset) { return load_archive(5, offset); }};
     bool preview_ = false;
     license::SuspendedFeatures license_features_;
     bool reduce_motion_ = false;

@@ -975,9 +975,8 @@ void App::open_folder(const std::wstring& path) {
 }
 
 void App::refresh_archive() {
-    archive_ = load_archive(5, archive_offset_);
+    archive_loader_.request(archive_offset_);
     last_archive_refresh_ = now_seconds();
-    InvalidateRect(hwnd_, nullptr, FALSE);
 }
 
 void App::read_logs(bool force) {
@@ -1171,10 +1170,6 @@ void App::handle_click(const HitTarget& hit) {
     if (id == L"archive:older") {
         archive_offset_ += 5;
         refresh_archive();
-        if (archive_.empty() && archive_offset_ >= 5) {
-            archive_offset_ -= 5;
-            refresh_archive();
-        }
         return;
     }
     if (id == L"archive:open") {
@@ -1356,6 +1351,17 @@ void App::handle_click(const HitTarget& hit) {
 
 void App::tick() {
     const double now = now_seconds();
+    if (auto result = archive_loader_.poll()) {
+        if (!result->failed && result->offset == archive_offset_) {
+            if (result->rows.empty() && archive_offset_ >= 5) {
+                archive_offset_ -= 5;
+                refresh_archive();
+            } else {
+                archive_ = std::move(result->rows);
+                invalidate();
+            }
+        }
+    }
     const float dt = last_tick_time_ > 0.0 ? static_cast<float>(now - last_tick_time_) : 0.016f;
     last_tick_time_ = now;
     const float clamped_dt = clampf(dt, 0.001f, 0.05f);
@@ -1471,7 +1477,7 @@ void App::tick() {
     // process is selected. Refresh it independently so deletes written by the
     // injected hook show up without a manual refresh, and remain visible after
     // the GUI is restarted.
-    if (archive_offset_ == 0 && !injecting_ && now - last_archive_refresh_ > 2.2) {
+    if (page_is(PageId::Messages) && archive_offset_ == 0 && !injecting_ && now - last_archive_refresh_ > 2.2) {
         refresh_archive();
     }
     if (settings_dirty_ && now - last_save_ > 0.8) save_settings_now();

@@ -2,6 +2,20 @@
 
 [简体中文](CHANGELOG.md) · **English**
 
+## v2026.11.10.1 · Stable
+
+- Fix a main-thread hang caused by non-progressing neighbour traversal during deleted-message restoration.
+- Publish interception state and request a label refresh immediately; batch archive writes and durable flushes on a background worker.
+- Show pending persistence accurately and retry failed writes with backoff.
+- Bound restoration work by item count and elapsed time to reduce long UI stalls.
+- Read archive pages asynchronously, coalesce rapid paging, discard stale results, and stop periodic reads while the page is hidden.
+- Pin module versions to sessions so existing clients keep renewing and updated clients receive the repair, without extending card expiry.
+- Keep desktop changes and new tests MIT-licensed; the repaired Hook implementation remains private.
+
+After upgrading, restart Telegram and inject again with the updated client. An already loaded module is not replaced in a running process.
+
+Validation: 173 core unit tests, 8 binary-adaptation audit tests, 10 native host test groups, 21 backend regressions, and a real signed activation/download/renewal probe passed. The hang was sampled from a live process and covered by hidden-neighbour and blocked-disk regression fixtures. Multi-day live-chat endurance has not yet been completed.
+
 ## v2026.11.07.1 · Stable
 
 - Publish the desktop UI, motion, translation tools, licensing client and tests under MIT; retain the core Hook privately.
