@@ -1,7 +1,7 @@
 <p align="center"><img src="assets/cover.png" alt="TeleVip Native — Windows 原生客户端" width="100%"></p>
 <p align="center"><b>简体中文</b> · <a href="README.en.md">English</a></p>
 <h1 align="center">TeleVip Native</h1>
-<p align="center">面向 Telegram Desktop 的 Windows 原生增强控制台</p>
+<p align="center">面向 Telegram Desktop 的 Windows 原生增强控制台 最佳支持7.3.5 x64</p>
 <p align="center"><img src="assets/badges.png" alt="Windows x64 · MIT 桌面源码 · 核心 Hook 私有" width="680"></p>
 <p align="center"><a href="https://github.com/ldxm666/TeleVip-Desktop/releases/tag/v2026.11.07.1"><b>下载正式版</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 张免费体验卡</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
 
