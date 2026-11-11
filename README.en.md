@@ -3,7 +3,7 @@
 <h1 align="center">TeleVip Native</h1>
 <p align="center">A native Windows control panel for Telegram Desktop enhancements</p>
 <p align="center"><img src="assets/badges-en.png" alt="Windows x64 · MIT desktop source · Private Hook core" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVip-Desktop/releases/tag/v2026.11.10.1"><b>Download the stable release</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 free trial keys</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVip-Desktop/releases/tag/v2026.11.11.1"><b>Download the stable release</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 free trial keys</b></a>　·　<a href="https://t.me/MapAdkillerr">Join the release channel</a>　·　<a href="#free-license-keys">Free keys</a>　·　<a href="#help-and-feedback">Help</a></p>
 
 ---
 
@@ -11,7 +11,7 @@ TeleVip Native brings feature controls, online licensing and common tools into o
 
 > **Desktop source is now public under MIT; the core Hook remains private.** This repository includes the native interface, motion, themes, translation tools, licensing client and tests. The official Windows client remains available as a stable release. See [source scope](SOURCE_SCOPE.md) and [build instructions](BUILDING.md).
 
-> **v2026.11.10.1 stability update:** fixes a hang while restoring deleted messages, refreshes interception labels before background archive writes, and moves archive reads off the UI thread. Restart Telegram and inject again after upgrading. See the [changelog](CHANGELOG.en.md).
+> **v2026.11.11.1 stable:** fixes large empty deletion bubbles and adds immediate local numbering, bot filtering, selected-instance links, lightweight update notices and bilingual announcements. See the [changelog](CHANGELOG.en.md).
 
 ## Explore the source
 

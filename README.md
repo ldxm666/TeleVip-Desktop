@@ -3,7 +3,7 @@
 <h1 align="center">TeleVip Native</h1>
 <p align="center">面向 Telegram Desktop 的 Windows 原生增强控制台 --最佳支持7.3.5 x64</p>
 <p align="center"><img src="assets/badges.png" alt="Windows x64 · MIT 桌面源码 · 核心 Hook 私有" width="680"></p>
-<p align="center"><a href="https://github.com/ldxm666/TeleVip-Desktop/releases/tag/v2026.11.10.1"><b>下载正式版</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 张免费体验卡</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
+<p align="center"><a href="https://github.com/ldxm666/TeleVip-Desktop/releases/tag/v2026.11.11.1"><b>下载正式版</b></a>　·　<a href="TRIAL_KEYS.md"><b>100 张免费体验卡</b></a>　·　<a href="https://t.me/MapAdkillerr">加入发布频道</a>　·　<a href="#免费卡密">免费卡密</a>　·　<a href="#问题与反馈">使用帮助</a></p>
 
 ---
 
@@ -11,7 +11,7 @@ TeleVip Native 将功能控制、授权验证与常用工具整合在一个原�
 
 > **桌面层现已采用 MIT 开源，核心 Hook 继续私有。** 本仓库公开原生界面、动效、主题、翻译工具、授权客户端与测试，并提供官方 Windows 正式版。请查看 [源码范围](SOURCE_SCOPE.md) 与 [构建说明](BUILDING.md)。
 
-> **v2026.11.10.1 稳定性更新：**修复已删除消息恢复时的卡死；拦截提示先刷新、归档后台批量保存；历史归档读取移出界面线程。升级后请重启 Telegram 并重新注入。详见 [更新记录](CHANGELOG.md)。
+> **v2026.11.11.1 正式版：**修复删除后的大块空白，优化连续序号与删除通知，加入机器人过滤、所选实例链接路由、轻量版本通知及双语公告。详见 [更新记录](CHANGELOG.md)。
 
 ## 从源码开始
 

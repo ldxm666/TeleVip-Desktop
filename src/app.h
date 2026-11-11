@@ -12,6 +12,9 @@
 #include "theme.h"
 #include "tools.h"
 #include "archive_loader.h"
+#include "news.h"
+#include "telegram_link.h"
+#include <future>
 
 namespace tv {
 
@@ -162,6 +165,9 @@ private:
     void draw_roadmap(float y, float width);
     void draw_accent_picker(float y, float width);
     void draw_support(float y, float width);
+    float draw_news(float y, float width);
+    void open_community_async();
+    void poll_news_and_links();
     void draw_sidebar_footer();
     void create_support_controls();
     void position_support_controls();
@@ -350,6 +356,11 @@ private:
     bool last_date_visible_ = false;
     bool positioning_controls_ = false;
     Rect last_date_edit_rect_;
+    news::Client news_client_;
+    news::Model news_;
+    bool news_checking_ = false;
+    std::wstring news_status_;
+    std::future<std::wstring> link_task_;
     double caret_phase_ = 0.0;
 };
 

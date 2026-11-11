@@ -196,6 +196,13 @@ bool App::create() {
         refresh_archive();
         read_logs(true);
     }
+    if (!preview_) {
+        news_client_.start();
+        if (selected_pid_) {
+            std::wstring error;
+            if (!telegram_link::bind(selected_pid_, error)) debug_log(L"link routing: binding unavailable");
+        }
+    }
     ShowWindow(hwnd_, SW_SHOW);
     UpdateWindow(hwnd_);
     SetFocus(hwnd_);
@@ -223,6 +230,16 @@ LRESULT CALLBACK App::wnd_proc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam
 
 void App::on_message(UINT msg, WPARAM wparam, LPARAM lparam, LRESULT& result, bool& handled) {
     switch (msg) {
+    case WM_COPYDATA: {
+        const auto* data = reinterpret_cast<const COPYDATASTRUCT*>(lparam);
+        if (data && data->dwData == 0x54474C4B && data->lpData && data->cbData >= 2 && data->cbData <= 1024 && data->cbData % 2 == 0) {
+            const auto* text = static_cast<const wchar_t*>(data->lpData);
+            const size_t size = data->cbData / sizeof(wchar_t);
+            if (text[size - 1] == 0) show_toast(std::wstring(text, size - 1), palette_.warning);
+            handled = true; result = 1; return;
+        }
+        break;
+    }
     case WM_PAINT: {
         PAINTSTRUCT paint{};
         hdc_ = BeginPaint(hwnd_, &paint);
@@ -843,6 +860,10 @@ void App::select_process(int index) {
     native_agent_.set_target(selected_pid_);
     native_agent_.set_enabled(settings_.native_translate);
     set_status(StatusKind::Selected, selected_pid_);
+    if (!preview_) {
+        std::wstring error;
+        if (!telegram_link::bind(selected_pid_, error)) debug_log(L"link routing: binding unavailable");
+    }
     InvalidateRect(hwnd_, nullptr, FALSE);
 }
 
@@ -887,6 +908,8 @@ void App::inject() {
         return;
     }
     if (probe_existing_hook(selected_pid_) || hook_module_loaded(selected_pid_)) {
+        std::wstring error;
+        if (!telegram_link::bind(selected_pid_, error)) log_note(L"link routing: binding unavailable");
         set_status(StatusKind::ExistingHook, selected_pid_);
         show_toast(i18n_.t(L"msg_existing_hook_refuse"), palette_.warning);
         InvalidateRect(hwnd_, nullptr, FALSE);
@@ -934,6 +957,8 @@ void App::handle_inject_done(InjectionResult* raw) {
     for (const auto& line : result->local_messages) log_note(L"local: " + line);
 
     if (result->ok && hook_active_) {
+        std::wstring error;
+        if (!preview_ && !telegram_link::bind(result->pid, error)) log_note(L"link routing: binding unavailable");
         if (result->hook_state == 4) {
             set_status(StatusKind::ExistingHook, result->pid);
             show_toast(i18n_.t(L"status_already_hooked"), palette_.warning);
@@ -1061,9 +1086,18 @@ void App::handle_click(const HitTarget& hit) {
         switch_page(std::stoi(id.substr(4)));
         return;
     }
-    if (id == L"community:open") {
-        std::wstring error;
-        if (!open_community(hwnd_, error)) show_toast(i18n_.t(L"community_open_failed") + L" " + error, palette_.danger);
+    if (id == L"community:open") { open_community_async(); return; }
+    if (id == L"news:open") { switch_page(static_cast<int>(PageId::Support)); return; }
+    if (id == L"news:check") {
+        if (!preview_ && !news_checking_) { news_checking_ = true; news_client_.request(); invalidate(); }
+        return;
+    }
+    if (id == L"news:read") { news_client_.acknowledge(news_.revision); invalidate(); return; }
+    if (id == L"news:update") {
+        const auto url = news::official_release(news_.update_url) ? utf8_to_wide(news_.update_url)
+            : L"https://github.com/ldxm666/TeleVip-Desktop/releases/latest";
+        const auto result = reinterpret_cast<INT_PTR>(ShellExecuteW(hwnd_, L"open", url.c_str(), nullptr, nullptr, SW_SHOWNORMAL));
+        if (result <= 32) show_toast(i18n_.is_zh() ? L"无法打开更新页，请检查默认浏览器" : L"Unable to open the release page", palette_.warning);
         return;
     }
     if (preview_ && id != L"logs:toggle" && id.rfind(L"accent:", 0) != 0) return;
@@ -1351,6 +1385,7 @@ void App::handle_click(const HitTarget& hit) {
 
 void App::tick() {
     const double now = now_seconds();
+    poll_news_and_links();
     if (auto result = archive_loader_.poll()) {
         if (!result->failed && result->offset == archive_offset_) {
             if (result->rows.empty() && archive_offset_ >= 5) {
@@ -2341,6 +2376,7 @@ std::vector<FeatureDef> App::message_features() {
         {L"feature_deleted_title", L"feature_deleted_desc", FLAG_DELETED_ARCHIVE},
         {L"feature_msg_id_title", L"feature_msg_id_desc", FLAG_SHOW_MSG_ID},
         {L"feature_edit_history_title", L"feature_edit_history_desc", FLAG_EDIT_HISTORY},
+        {L"feature_ignore_bots_title", L"feature_ignore_bots_desc", FLAG_IGNORE_BOT_DELETIONS},
     };
 }
 
@@ -2431,8 +2467,13 @@ void App::draw_page_header() {
     renderer_.text(page_subtitle(static_cast<PageId>(page_)),
                    Rect{x, y + 41.0f, client_w_ - 24.0f, y + 72.0f}, subtitle, palette_.text_secondary);
     const Rect tag{client_w_ - 24.0f - 92.0f, y + 3.0f, client_w_ - 24.0f, y + 27.0f};
-    draw_badge(tag, i18n_.t(page_is(PageId::Support) ? L"support_badge" :
-               (pages_[page_].workspace ? L"nav_workspace" : L"mpt_badge")), palette_.accent, palette_.accent_soft);
+    const bool unread_news = news_.has_announcement() && news_.revision > news_client_.acknowledged();
+    const auto tag_text = news_.has_update() ? (i18n_.is_zh() ? L"发现新版本" : L"UPDATE")
+        : unread_news ? (i18n_.is_zh() ? L"新公告" : L"NEWS")
+        : i18n_.t(page_is(PageId::Support) ? L"support_badge" :
+            (pages_[page_].workspace ? L"nav_workspace" : L"mpt_badge"));
+    draw_badge(tag, tag_text, palette_.accent, palette_.accent_soft);
+    if (unread_news || news_.has_update()) add_hit(L"news:open", tag, IDC_HAND);
 }
 
 void App::layout_page() {
@@ -2597,7 +2638,7 @@ void App::draw_page() {
     }
     if (page_is(PageId::Messages)) {
         const auto features = message_features();
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < static_cast<int>(features.size()); ++i) {
             const int col = i % 2;
             const int row = i / 2;
             const Rect card{x + col * (cw + metrics_.gap), y + row * 104.0f,
@@ -2606,17 +2647,6 @@ void App::draw_page() {
             draw_feature_card(card, features[i], key, hover_anim_[L"card:" + key].value,
                               toggle_anim_[features[i].bit].value);
         }
-        const Rect sidecar{x + cw + metrics_.gap, y + 104.0f, x + width, y + 196.0f};
-        draw_card_shell(sidecar, hover_anim_[L"card:sidecar"].value, false);
-        draw_badge(Rect{sidecar.left + 16.0f, sidecar.top + 14.0f, sidecar.left + 94.0f,
-                        sidecar.top + 34.0f}, i18n_.t(L"sidecar"), palette_.accent, palette_.accent_soft);
-        TextStyle desc;
-        desc.size = 9.5f;
-        desc.wrap = true;
-        renderer_.text(i18n_.t(L"archive_desc"), Rect{sidecar.left + 16.0f, sidecar.top + 44.0f,
-                                                      sidecar.right - 16.0f, sidecar.bottom - 10.0f},
-                       desc, palette_.text_secondary);
-        add_hit(L"card:sidecar", sidecar);
         const float archive_y = y + 208.0f;
         draw_archive(archive_y, width);
         return;

@@ -22,7 +22,7 @@ set TV_DARK=0
 build\TeleVipNative-Preview.exe
 ```
 
-九组测试覆盖 UI 布局、动效、识别、JSON、翻译请求、本地翻译服务、真实 CNG 签名校验，以及授权续期策略与开关恢复。测试不连接生产授权服务，不使用私人卡密。源码文件中的生产公钥用于验证固定签名测试向量，不能用于签发授权。
+十二组测试覆盖 UI 布局、动效、识别、JSON、翻译请求、本地翻译服务、真实 CNG 签名校验，以及授权续期策略与开关恢复。测试不连接生产授权服务，不使用私人卡密。源码文件中的生产公钥用于验证固定签名测试向量，不能用于签发授权。
 
 完整官方客户端依赖 [未公开核心](SOURCE_SCOPE.md)，公共构建的产物名称和能力与官方正式版不同。
 
@@ -32,4 +32,8 @@ Install Visual Studio 2022 / Build Tools with **Desktop development with C++**, 
 
 `build\TeleVipNative-Preview.exe` runs the public UI preview. It requires no license, does not load official settings or production IPC, and cannot inject Telegram. Optional environment variables select language, theme and page as shown above.
 
-The nine test groups run without production credentials or the private Hook. The public verification key validates a fixed CNG test vector and cannot sign licenses. Building the complete official client requires the private core and is outside this public target.
+The twelve test groups run without production credentials or the private Hook. The public verification key validates a fixed CNG test vector and cannot sign licenses. Building the complete official client requires the private core and is outside this public target.
+
+
+新增公开模块 / Additional public modules: `src/news*`, `src/signed_content.h`, `src/telegram_link.*`，以及缓存验签、版本解析和官方 Telegram 单实例协议回归。公告管理服务、部署配置和核心 Hook 不在此源码范围内。
+The new desktop news and link modules are public. Announcement administration, deployment configuration and the Hook core remain private.

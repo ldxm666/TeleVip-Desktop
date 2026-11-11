@@ -82,7 +82,7 @@ namespace tv {
 using Microsoft::WRL::ComPtr;
 
 constexpr wchar_t kAppName[] = L"TeleVip Desktop";
-constexpr wchar_t kAppVersion[] = L"7.3.3 · native";
+constexpr wchar_t kAppVersion[] = L"2026.11.11.1 · native";
 constexpr UINT kIdrHookDll = 101;
 
 constexpr uint32_t FLAG_HIDE_SEEN_PRIVATE       = 1u << 0;
@@ -100,6 +100,7 @@ constexpr uint32_t FLAG_PREMIUM                 = 1u << 10;
 constexpr uint32_t FLAG_REMOVE_CONTENT_SAVING   = 1u << 11;
 constexpr uint32_t FLAG_DISABLE_NUMBER_ROUNDING = 1u << 12;
 constexpr uint32_t FLAG_HIDE_PHONE              = 1u << 13;
+constexpr uint32_t FLAG_IGNORE_BOT_DELETIONS     = 1u << 24;
 constexpr uint32_t FLAG_SHOW_MSG_ID             = 1u << 14;
 
 constexpr uint32_t FLAG_HIDE_PINNED             = 1u << 15;

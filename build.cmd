@@ -13,7 +13,7 @@ rc /nologo /fo build\app.res res\app.rc
 if errorlevel 1 exit /b 1
 cl /nologo /std:c++20 /EHsc /O2 /W3 /utf-8 /DUNICODE /D_UNICODE /D_WIN32_WINNT=0x0A00 /I. ^
  /I"%WindowsSdkDir%Include\%WindowsSDKVersion%cppwinrt" ^
- common.cpp i18n.cpp preview_platform.cpp tools.cpp render.cpp overlay.cpp native_translate.cpp app.cpp support.cpp public_main.cpp ^
+ common.cpp i18n.cpp preview_platform.cpp tools.cpp render.cpp overlay.cpp native_translate.cpp app.cpp support.cpp news.cpp news_ui.cpp telegram_link.cpp public_main.cpp ^
  /Fo:build\ /Fe:..\build\TeleVipNative-Preview.exe ^
  /link /SUBSYSTEM:WINDOWS /MANIFEST:NO /OPT:REF /OPT:ICF windowsapp.lib gdiplus.lib build\app.res
 if errorlevel 1 exit /b 1

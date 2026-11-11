@@ -2,6 +2,20 @@
 
 [简体中文](CHANGELOG.md) · **English**
 
+## v2026.11.11.1 · Stable
+
+- Fix oversized empty bubbles after deletion interception. A narrow timestamp slot can no longer wrap the status character by character; metadata has at most two rows and painting no longer rewrites measured sizes repeatedly.
+- Retain eligible messages before native removal notifications start disappearance animations, reducing delete-and-reinsert flicker on normal deletion events.
+- Assign consecutive local display numbers immediately from the loaded message order and existing anchors. Retained deleted rows keep their position. Loading older history may reflow local numbers; these are not a count of the complete server history.
+- Add an optional ignore-bot-deletions switch, off by default. Known bot messages then follow normal deletion. Unknown senders remain protected and existing archives are preserved.
+- Forward Telegram links to the selected instance, checking its PID and creation time. A closed target produces an error instead of starting a different Telegram instance.
+- Add signed version notices and bilingual announcements with background checks approximately every five minutes, ETags, caching and retry backoff. No additional service, persistent connection or per-read database query is required. Downloads open the official stable release page for the user.
+- Preserve card expiry and older module compatibility. Desktop source remains MIT; the Hook core stays private.
+
+Upgrade: restart Telegram and inject with the new client. A loaded core is not hot-replaced. The local validation restart used Telegram's normal quit command without forced termination.
+
+Validation: 182 core unit tests, 8 binary-adaptation checks, 12 native desktop test groups, 22 licensing compatibility regressions and 11 announcement regressions passed, plus real TLS activation, signed download and renewal. Narrow bubbles, repeated layout and immediate numbering have deterministic regressions. Multi-day live-chat endurance has not been completed.
+
 ## v2026.11.10.1 · Stable
 
 - Fix a main-thread hang caused by non-progressing neighbour traversal during deleted-message restoration.

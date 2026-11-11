@@ -226,7 +226,7 @@ bool authorize(const std::wstring& card, bool refresh, std::wstring& error, Requ
     }
     std::string bearer;
     { std::lock_guard<std::mutex> lock(mutex); bearer = session_token; }
-    const std::string body = "{\"hook_revision\":\"20261110.1\",\"device_id\":\"" + device + "\",\"nonce\":\"" + challenge + "\"" +
+    const std::string body = "{\"hook_revision\":\"20261111.1\",\"device_id\":\"" + device + "\",\"nonce\":\"" + challenge + "\"" +
         (refresh ? "}" : ",\"card_key\":\"" + key + "\"}");
     std::vector<BYTE> response;
     if (!post(refresh ? L"refresh" : L"activate", body, refresh ? bearer : "", response, error, 16384, failure)) return false;

@@ -106,11 +106,8 @@ bool copy_community_link(HWND owner, std::wstring& error) {
 
 bool open_community(HWND owner, std::wstring& error) {
     error.clear();
-    const auto result = reinterpret_cast<INT_PTR>(
-        ShellExecuteW(owner, L"open", kCommunityUrl, nullptr, nullptr, SW_SHOWNORMAL));
-    if (result > 32) return true;
-    error = win_error(static_cast<DWORD>(result));
-    return false;
+    (void)owner;
+    return telegram_link::forward_bound(kCommunityUrl, error);
 }
 
 void App::create_support_controls() {
@@ -211,8 +208,7 @@ bool App::handle_support_command(int id) {
     if (id == kSupportFirstControl) {
         switch_page(static_cast<int>(PageId::Support));
     } else if (id == kSupportFirstControl + 1 || id == kSupportFirstControl + 4) {
-        std::wstring error;
-        if (!open_community(hwnd_, error)) show_toast(i18n_.t(L"community_open_failed") + L" " + error, palette_.danger);
+        open_community_async();
     } else if (id == kSupportFirstControl + 5) {
         std::wstring error;
         if (copy_community_link(hwnd_, error)) show_toast(i18n_.t(L"community_copied"), palette_.success);
@@ -250,6 +246,7 @@ void App::draw_sidebar_footer() {
 void App::draw_support(float y, float width) {
     const float x = viewport_.left;
     const float start = y;
+    y += draw_news(y, width) + 16.0f;
     const auto layout = support_layout(width);
     for (int i = 0; i < 2; ++i) {
         const int col = i % layout.columns;
